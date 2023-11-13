@@ -1,0 +1,35 @@
+import random
+
+def kamien_papier_nozyce(gracz, komputer):
+    if gracz == komputer:
+        return "Remis!"
+    elif (gracz == "kamien" and komputer == "nozyce") or \
+         (gracz == "papier" and komputer == "kamien") or \
+         (gracz == "nozyce" and komputer == "papier"):
+        return "Gracz wygrywa!"
+    else:
+        return "Komputer wygrywa!"
+
+def main():
+    print("Witaj w grze Kamień-Papier-Nożyce!")
+
+    while True:
+        gracz = input("Wybierz kamień, papier lub nożyce: ").lower()
+
+        if gracz not in ["kamien", "papier", "nozyce"]:
+            print("Nieprawidłowy wybór. Spróbuj ponownie.")
+            continue
+
+        komputer = random.choice(["kamien", "papier", "nozyce"])
+        print(f"Komputer wybrał: {komputer}")
+
+        wynik = kamien_papier_nozyce(gracz, komputer)
+        print(wynik)
+
+        kolejna_runda = input("Czy chcesz zagrać jeszcze raz? (Tak/Nie): ")
+        if kolejna_runda.lower() != 'tak':
+            print("Dziękuję za grę! Do widzenia.")
+            break
+
+if __name__ == "__main__":
+    main()
